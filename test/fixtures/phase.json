@@ -1,0 +1,81 @@
+{
+	"config": {
+		/* Must-have options */
+		"paths": {
+			"source": "assets/",
+			"dist": "dist/"
+		},
+		"fileTypes": {
+			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
+			"scripts": "*.js",
+			"styles": "*.{css,styl,less,scss}",
+			"images": "*.{jpg,jpeg,webp,png,gif}",
+			"sounds": "*.{mp3,wav}"
+		},
+		/* Optional and extra attributes */
+		"supportedBrowsers": [
+			"last 2 versions",
+			"android 4",
+			"opera 12"
+		],
+		"browserSync": {
+			"devUrl": "localhost/phase",
+			"whitelist": [],
+			"blacklist": []
+		},
+		"tasks": {
+			"scripts": "scripts",
+			"styles2": "styles"
+		}
+	},
+	"dependencies": {
+		"sounds": {
+			"*": {
+				"files": [
+					"sounds/**/*"
+				]
+			}
+		},
+		"scripts": {
+			"main.js": {
+				"files": [
+					"scripts/wrapper.js"
+				],
+				"vendor": [
+					"assets/scripts/vendor/*.js"
+				],
+				"bower": ["jquery"]
+			},
+			"set.js": {
+				"bower": ["modernizr"]
+			}
+		},
+		"styles": {
+			"main.css": {
+				"files": [
+					"styles/wrapper.styl"
+				],
+				"vendor": [
+					"assets/styles/vendor/reset.css",
+					"assets/styles/vendor/*.css"
+				],
+				"bower": ["bootstrap"]
+			}
+		},
+		"fonts": {
+			"*": {
+				"files": [
+					"fonts/**/*"
+				],
+				"bower": ["bootstrap"]
+			}
+		},
+		"images": {
+			"*": {
+				"files": [
+					"images/**/*"
+				]
+			}
+		}
+	}
+}

@@ -1,37 +1,57 @@
 {
-  "dependencies": {
-    "app.js": {
-      "files": [
-        "scripts/**/*",
-        "scripts/main.js"
-      ],
-      "main": true
-    },
-    "app.css": {
-      "files": [
-        "styles/main.less"
-      ],
-      "main": true
-    },
-    "external.js": {
-      "files": [
-        "../../noappend.js"
-      ],
-      "external": true
-    },
-    "vendor.js": {
-      "files": [
-        "scripts/somescript.js"
-      ],
-      "vendor": [
-        "../../plugin/script.js"
-      ]
-    },
-    "jquery.js": {
-      "bower": ["jquery"]
-    },
-    "modernizr.js": {
-      "bower": ["modernizr"]
-    }
-  }
+	"config": {
+		"paths": {
+			"source": "assets/",
+			"dist": "dist/"
+		},
+		"fileTypes": {
+			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
+			"scripts": "*.js",
+			"styles": "*.{css,styl,less,scss}",
+			"images": "*.{jpg,jpeg,webp,png,gif}"
+		}
+	},
+	"dependencies": {
+		"scripts": {
+			"app.js": {
+				"files": [
+					"scripts/**/*",
+					"scripts/main.js"
+				],
+				"main": true
+			},
+			"external.js": {
+				"files": [
+					"../../noappend.js"
+				],
+				"external": true
+			},
+			"vendor.js": {
+				"files": [
+					"scripts/somescript.js"
+				],
+				"vendor": [
+					"../../plugin/script.js"
+				]
+			},
+			"jquery.js": {
+				"bower": [
+					"jquery"
+				]
+			},
+			"modernizr.js": {
+				"bower": [
+					"modernizr"
+				]
+			}
+		},
+		"styles": {
+			"app.css": {
+				"files": [
+					"styles/main.less"
+				],
+				"main": true
+			}
+		}
+	}
 }

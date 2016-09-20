@@ -1,26 +1,44 @@
 {
-  "dependencies": {
-    "app.js": {
-      "files": [
-        "scripts/**/*",
-        "scripts/main.js"
-      ],
-      "main": true,
-      "vendor": []
-    },
-    "app.css": {
-      "files": "styles/main.less",
-      "main": true
-    },
-    "home.js": {
-      "files": "scripts/home.js",
-      "bower": ["slick.js"]
-    },
-    "jquery.js": {
-      "bower": ["jquery"]
-    },
-    "modernizr.js": {
-      "bower": ["modernizr.js"]
-    }
-  }
+	"config": {
+		"fileTypes": {
+			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
+			"scripts": "*.js",
+			"styles": "*.{css,styl,less,scss}",
+			"images": "*.{jpg,jpeg,webp,png,gif}"
+		}
+	},
+	"dependencies": {
+		"scripts": {
+			"app.js": {
+				"files": [
+					"scripts/**/*",
+					"scripts/main.js"
+				],
+				"main": true,
+				"vendor": []
+			},
+			"home.js": {
+				"files": "scripts/home.js",
+				"bower": [
+					"slick.js"
+				]
+			},
+			"jquery.js": {
+				"bower": [
+					"jquery"
+				]
+			},
+			"modernizr.js": {
+				"bower": [
+					"modernizr.js"
+				]
+			}
+		},
+		"styles": {
+			"app.css": {
+				"files": "styles/main.less",
+				"main": true
+			}
+		}
+	}
 }

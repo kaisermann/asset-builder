@@ -1,23 +1,43 @@
 {
-  "dependencies": {
-    "app.js": {
-      "files": [
-        "scripts/**/*",
-        "scripts/main.js"
-      ],
-      "main": true
-    },
-    "app.css": {
-      "files": [
-        "styles/main.less"
-      ],
-      "main": true
-    },
-    "jquery.js": {
-      "bower": ["jquery"]
-    },
-    "modernizr.js": {
-      "bower": ["modernizr"]
-    }
-  }
+	"config": {
+		"fileTypes": {
+			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
+			"scripts": "*.js",
+			"styles": "*.css",
+			"images": "*.{jpg,png,gif}",
+			"sounds": "*.{mp3,wav}"
+		}
+	},
+	"dependencies": {
+		"scripts": {
+			"app.js": {
+				"files": [
+					"scripts/**/*",
+					"scripts/main.js"
+				],
+				"main": true
+			},
+			"jquery.js": {
+				"bower": [
+					"jquery"
+				]
+			},
+			"modernizr.js": {
+				"bower": [
+					"modernizr"
+				]
+			}
+		},
+		"styles": {
+			"app.css": {
+				"files": [
+					"styles/main.less"
+				],
+				"bower": [
+					"bootstrap"
+				],
+				"main": true
+			}
+		}
+	}
 }
