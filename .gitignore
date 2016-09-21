@@ -31,3 +31,5 @@ test/tmp/
 
 site/*
 !site/index.html
+
+chris.js
