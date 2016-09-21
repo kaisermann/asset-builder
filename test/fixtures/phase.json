@@ -18,6 +18,7 @@
 	"assets": {
 		"scripts": {
 			"main.js": {
+				"main": true,
 				"files": [
 					"scripts/wrapper.js"
 				],
