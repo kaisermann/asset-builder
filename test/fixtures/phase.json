@@ -3,9 +3,7 @@
 		/* Must-have options */
 		"paths": {
 			"source": "assets/",
-			"dist": "dist/",
-			"bowerDirectory": "test/tmp/bower_components",
-			"bowerJson": "test/tmp/bower.json"
+			"dist": "dist/"
 		},
 		"fileTypes": {
 			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
