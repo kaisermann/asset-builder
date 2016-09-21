@@ -16,13 +16,6 @@
 		}
 	},
 	"assets": {
-		"sounds": {
-			"*": {
-				"files": [
-					"sounds/**/*"
-				]
-			}
-		},
 		"scripts": {
 			"main.js": {
 				"files": [
@@ -56,7 +49,7 @@
 			}
 		},
 		"fonts": {
-			"*": {
+			"/": {
 				"files": [
 					"fonts/**/*"
 				],
@@ -66,9 +59,16 @@
 			}
 		},
 		"images": {
-			"*": {
+			"/": {
 				"files": [
 					"images/**/*"
+				]
+			}
+		},
+		"sounds": {
+			"/": {
+				"files": [
+					"sounds/**/*"
 				]
 			}
 		}

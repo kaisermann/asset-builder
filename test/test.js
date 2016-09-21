@@ -8,7 +8,7 @@ var m = require('../index');
 var readManifest = require('../lib/readManifest');
 var processManifest = require('../lib/processManifest');
 var buildGlobs = require('../lib/buildGlobs');
-var Dependency = require('../lib/Dependency');
+var Asset = require('../lib/Asset');
 var bower = require('bower');
 var Q = require('q');
 var mkdirp = require('mkdirp');
@@ -76,46 +76,46 @@ describe('Processing the Manifest', function () {
   });
 });
 
-describe('Dependency', function () {
-  var dep = new Dependency('app.js', {
+describe('Asset', function () {
+  var asset = new Asset('app.js', {
 	vendor: ['test.js'],
 	files: ['test1.js']
   });
-  var depBare = new Dependency('app.css', {
+  var assetBare = new Asset('app.css', {
   });
-  var depVendor = new Dependency('app.js', {
+  var assetVendor = new Asset('app.js', {
 	vendor: ['assets/vendor1.js', 'assets/vendor2.js'],
 	files: ['firstparty1.js', 'firstparty2.js']
   });
   it('should set properties correctly', function () {
-	assert.equal(dep.type, 'js');
-	assert.equal(depBare.type, 'css');
-	assert.sameMembers(dep.globs, [
+	assert.equal(asset.type, 'js');
+	assert.equal(assetBare.type, 'css');
+	assert.sameMembers(asset.globs, [
 	  'test.js',
 	  'test1.js'
 	]);
-	assert.sameMembers(depBare.globs, []);
+	assert.sameMembers(assetBare.globs, []);
   });
   it('should put globs in order', function () {
-	assert.equal(dep.globs[0], 'test.js');
-	assert.equal(dep.globs[1], 'test1.js');
-	assert.equal(depVendor.globs[0], 'assets/vendor1.js');
-	assert.equal(depVendor.globs[1], 'assets/vendor2.js');
-	assert.equal(depVendor.globs[2], 'firstparty1.js');
-	assert.equal(depVendor.globs[3], 'firstparty2.js');
+	assert.equal(asset.globs[0], 'test.js');
+	assert.equal(asset.globs[1], 'test1.js');
+	assert.equal(assetVendor.globs[0], 'assets/vendor1.js');
+	assert.equal(assetVendor.globs[1], 'assets/vendor2.js');
+	assert.equal(assetVendor.globs[2], 'firstparty1.js');
+	assert.equal(assetVendor.globs[3], 'firstparty2.js');
   });
   it('should prependGlobs correctly', function () {
-	dep.prependGlobs('new.js');
-	assert.sameMembers(dep.globs, [
+	asset.prependGlobs('new.js');
+	assert.sameMembers(asset.globs, [
 	  'new.js',
 	  'test.js',
 	  'test1.js'
 	]);
   });
   it('should parse the type correctly', function () {
-	assert.equal(Dependency.parseType('app.css'), 'css');
-	assert.equal(Dependency.parseType('app.js'), 'js');
-	assert.equal(Dependency.parseType('app.min.1.11.1.js'), 'js');
+	assert.equal(Asset.parseType('app.css'), 'css');
+	assert.equal(Asset.parseType('app.js'), 'js');
+	assert.equal(Asset.parseType('app.min.1.11.1.js'), 'js');
   });
 });
 
@@ -213,13 +213,13 @@ describe('Glob building', function () {
 		}
 	  },
 	  "fonts": {
-		"*": {
+		"/": {
 		  files: ['font/path/*'],
 		  bower: ['lol']
 		}
 	  },
 	  "images": {
-		"*": {
+		"/": {
 		  files: ['image/path/*'],
 		  bower: ['lol']
 		}
@@ -233,14 +233,14 @@ describe('Glob building', function () {
 	  '/bower_components/lol/images/imageGIF.gif'
 	];
 	it('should output a fonts glob', function () {
-	  assert.sameMembers(new buildGlobs(defaultTypes, assets, bower).globs.fonts.globs, [
+	  assert.sameMembers(new buildGlobs(defaultTypes, assets, bower).globs.fonts[0].globs, [
 		'/bower_components/lol/fonts/test.woff',
 		'/bower_components/lol/fonts/test.woff2',
 		'font/path/*'
 	  ]);
 	});
 	it('should output an images glob', function () {
-	  assert.sameMembers(new buildGlobs(defaultTypes, assets, bower).globs.images.globs, [
+	  assert.sameMembers(new buildGlobs(defaultTypes, assets, bower).globs.images[0].globs, [
 		'/bower_components/lol/images/imageJPG.jpg',
 		'/bower_components/lol/images/imagePNG.png',
 		'/bower_components/lol/images/imageGIF.gif',
@@ -252,9 +252,9 @@ describe('Glob building', function () {
 	});
   });
 
-  describe('excluded bower dependencies from main', function () {
+  describe('excluded bower assets from main', function () {
 	it('should build a list of bower packages to exclude', function () {
-	  var deps = {
+	  var assets = {
 		"random.js": {
 		  bower: ['jquery']
 		},
@@ -262,7 +262,7 @@ describe('Glob building', function () {
 		  bower: ['bootstrap', 'bogus']
 		}
 	  };
-	  var exclude = buildGlobs.prototype.bowerExclude(deps);
+	  var exclude = buildGlobs.prototype.bowerExclude(assets);
 	  assert.sameMembers(exclude, [
 		'jquery',
 		'bootstrap',
@@ -366,7 +366,7 @@ describe('Integration Tests', function () {
 		assert.include(output.globs.scripts[2].globs[0], 'modernizr.js');
 
 		// has images
-		assert.sameMembers(output.globs.images.globs, [
+		assert.sameMembers(output.globs.images[0].globs, [
 		  'assets/images/**/*'
 		]);
 	  });
@@ -449,7 +449,7 @@ describe('convenience methods', function () {
 	  ]);
 	});
   });
-  describe('getDependency', function () {
+  describe('getAsset', function () {
 	var globs = {
 	  globs: {
 		css:
@@ -483,17 +483,17 @@ describe('convenience methods', function () {
 		]
 	  }
 	};
-	it('should get a css dependency by name', function () {
-	  var css = m.Manifest.prototype.getDependencyByName.call(globs, 'main.css');
-	  var js = m.Manifest.prototype.getDependencyByName.call(globs, 'test.js');
+	it('should get a css asset by name', function () {
+	  var css = m.Manifest.prototype.getAssetByName.call(globs, 'main.css');
+	  var js = m.Manifest.prototype.getAssetByName.call(globs, 'test.js');
 	  assert.equal('main.css', css.name);
 	  assert.equal('test.js', js.name);
 	});
   });
-  describe('foreach dep', function () {
+  describe('foreach asset', function () {
 	it('should loop through the assets', function () {
 	  var count = 0;
-	  m.Manifest.prototype.forEachDependency.call({
+	  m.Manifest.prototype.forEachAsset.call({
 		globs: {
 		  scripts: [
 			{
