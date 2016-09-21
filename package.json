@@ -1,6 +1,6 @@
 {
   "name": "asset-builder",
-  "version": "1.1.1",
+  "version": "1.2.0-alpha.1",
   "description": "assembles and orchestrates your assets so you can run them through your asset pipeline.",
   "main": "index.js",
   "scripts": {
@@ -27,8 +27,8 @@
 	"bower": "*",
 	"chai": "*",
 	"coveralls": "^2.11.2",
-	"docco": "^0.6.3",
-	"istanbul": "^0.3.2",
+	"docco": "^0.7.0",
+	"istanbul": "^0.4.5",
 	"jsdoc": "^3.3.0-alpha13",
 	"jshint": "^2.5.11",
 	"mkdirp": "^0.5.0",
@@ -37,10 +37,10 @@
 	"util": "^0.10.3"
   },
   "dependencies": {
-	"lodash": "^3.0.1",
+	"lodash": "^4.16.1",
 	"main-bower-files": "^2.4.0",
-	"minimatch": "^2.0.1",
-	"object-path": "^0.9.0",
+	"minimatch": "^3.0.3",
+	"object-path": "^0.11.2",
 	"strip-json-comments": "^2.0.1",
 	"traverse": "^0.6.6"
   }
