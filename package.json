@@ -1,47 +1,47 @@
 {
   "name": "asset-builder",
-  "version": "1.1.1",
-  "description": "assembles and orchestrates your dependencies so you can run them through your asset pipeline.",
+  "version": "1.2.0-alpha.2",
+  "description": "assembles and orchestrates your assets so you can run them through your asset pipeline.",
   "main": "index.js",
   "scripts": {
-    "coverage": "istanbul cover _mocha -- -R spec test",
-    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "docco": "docco -o site/docco lib/*.js index.js",
-    "documentation": "npm run jsdoc && npm run docco",
-    "jsdoc": "jsdoc -c jsdoc.json",
-    "jshint": "jshint lib/*.js index.js",
-    "jscs": "jscs lib/*.js index.js",
-    "test": "mocha test"
+	"coverage": "istanbul cover _mocha -- -R spec test",
+	"coveralls": "istanbul cover _mocha --report lcovonly -- -R spec test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+	"docco": "docco -o site/docco lib/*.js index.js",
+	"documentation": "npm run jsdoc && npm run docco",
+	"jsdoc": "jsdoc -c jsdoc.json",
+	"jshint": "jshint lib/*.js index.js",
+	"jscs": "jscs lib/*.js index.js",
+	"test": "mocha test"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/austinpray/asset-builder.git"
+	"type": "git",
+	"url": "https://github.com/austinpray/asset-builder.git"
   },
   "author": "Austin Pray <austin@austinpray.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/austinpray/asset-builder/issues"
+	"url": "https://github.com/austinpray/asset-builder/issues"
   },
   "homepage": "https://github.com/austinpray/asset-builder",
   "devDependencies": {
-    "bower": "*",
-    "chai": "*",
-    "coveralls": "^2.11.2",
-    "docco": "^0.6.3",
-    "istanbul": "^0.3.2",
-    "jsdoc": "^3.3.0-alpha13",
-    "jshint": "^2.5.11",
-    "mkdirp": "^0.5.0",
-    "mocha": "*",
-    "q": "^1.1.2",
-    "util": "^0.10.3"
+	"bower": "*",
+	"chai": "*",
+	"coveralls": "^2.11.2",
+	"docco": "^0.7.0",
+	"istanbul": "^0.4.5",
+	"jsdoc": "^3.3.0-alpha13",
+	"jshint": "^2.5.11",
+	"mkdirp": "^0.5.0",
+	"mocha": "*",
+	"q": "^1.1.2",
+	"util": "^0.10.3"
   },
   "dependencies": {
-    "lodash": "^3.0.1",
-    "main-bower-files": "^2.4.0",
-    "minimatch": "^2.0.1",
-    "object-path": "^0.9.0",
-    "strip-json-comments": "^2.0.1",
-    "traverse": "^0.6.6"
+	"lodash": "^4.16.1",
+	"main-bower-files": "^2.4.0",
+	"minimatch": "^3.0.3",
+	"object-path": "^0.11.2",
+	"strip-json-comments": "^2.0.1",
+	"traverse": "^0.6.6"
   }
 }

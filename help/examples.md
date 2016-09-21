@@ -26,15 +26,19 @@ gulp.src([
 
 ```json
 {
-  "dependencies": {
-    "app.js": {
-      "files": ["scripts/main.js"],
-      "main": true
-    },
-  },
-  "paths": {
-    "source": "assets/",
-    "dist": "dist/"
+	"config": {
+		"paths": {
+			"source": "assets/",
+			"dist": "dist/"
+		}
+	},
+	"assets": {
+	  "scripts": {
+			"app.js": {
+				"files": ["scripts/main.js"],
+				"main": true
+			}
+	  }
   }
 }
 ```
@@ -44,7 +48,7 @@ gulp.src([
 ```js
 var manifest = require('asset-builder')('./assets/manifest.json');
 
-var app = manifest.getDependencyByName('app.js');
+var app = manifest.getAssetByName('app.js');
 
 gulp.src(app.globs)
   .pipe(concat(app.name))
@@ -56,7 +60,7 @@ gulp.src(app.globs)
 
 - **Reuse your gulpfile, change the manifest.** Using asset-builder all the project specific configuration is done in the manifest JSON file. That way you can reuse gulpfiles across common projects or project modules.
 - **Build configuration externalized.** Change your build directory structure in one place.
-- **Use bower.json to control bower packages.** Do not manually manage your dependency graph
+- **Use bower.json to control bower packages.** Do not manually manage your asset graph
 
 ## Advanced Usage With gulp
 
@@ -65,7 +69,7 @@ Suppose you have a website with the following structure:
 - 20 regular pages that use basic jQuery and bootstrap for things like tabs and menus.
 - 1 "graphing" page where d3 and nvd3 is used to build some really nice graphs and charts.
 
-The 20 regular pages have nothing to do with graphing. So on those pages d3 and nvd3 are unused dependencies. You run some benchmarks and you conclude that by excluding d3 and nvd3 from your 20 regular pages, you will net a significant performance increase.
+The 20 regular pages have nothing to do with graphing. So on those pages d3 and nvd3 are unused assets. You run some benchmarks and you conclude that by excluding d3 and nvd3 from your 20 regular pages, you will net a significant performance increase.
 
 ![advanced usage](images/example2-js.png)
 
@@ -74,25 +78,25 @@ The 20 regular pages have nothing to do with graphing. So on those pages d3 and 
 ```js
 gulp.task('js:main', function () {
   return gulp.src([
-    'bower_components/jquery/jquery.js',
-    'bower_components/bootstrap/component.js',
-    'assets/scripts/main.js'
+	'bower_components/jquery/jquery.js',
+	'bower_components/bootstrap/component.js',
+	'assets/scripts/main.js'
   ])
-    .pipe(concat('app.js'))
-    .pipe(minify())
-    .pipe(gulp.dest('dist'));
+	.pipe(concat('app.js'))
+	.pipe(minify())
+	.pipe(gulp.dest('dist'));
 });
 
 
 gulp.task('js:graph', function () {
   return gulp.src([
-    'bower_components/d3/d3.js',
-    'bower_components/nvd3/nvd3.js',
-    'assets/scripts/graphs.js'
+	'bower_components/d3/d3.js',
+	'bower_components/nvd3/nvd3.js',
+	'assets/scripts/graphs.js'
   ])
-    .pipe(concat('graph-page.js'))
-    .pipe(minify())
-    .pipe(gulp.dest('dist'));
+	.pipe(concat('graph-page.js'))
+	.pipe(minify())
+	.pipe(gulp.dest('dist'));
 });
 
 gulp.task('js', ['js:main', 'js:graph']);
@@ -103,20 +107,22 @@ gulp.task('js', ['js:main', 'js:graph']);
 
 ```json
 {
-  "dependencies": {
-    "app.js": {
-      "files": ["scripts/main.js"],
-      "main": true
-    },
-    "graph-page.js": {
-      "files": ["scripts/graphs.js"],
-      "bower": ["d3", "nvd3"]
-    }
-  },
-  "paths": {
-    "source": "assets/",
-    "dist": "dist/"
-  }
+	"config": {
+		"paths": {
+			"source": "assets/",
+			"dist": "dist/"
+		}
+	},
+	"assets": {
+		"app.js": {
+			"files": ["scripts/main.js"],
+			"main": true
+		},
+		"graph-page.js": {
+			"files": ["scripts/graphs.js"],
+			"bower": ["d3", "nvd3"]
+		}
+	}
 }
 ```
 
@@ -125,15 +131,15 @@ var manifest = require('asset-builder')('./assets/manifest.json');
 
 gulp.task('js', function() {
   var merge = require('merge-stream');
-  manifest.forEachDependency('js', function(dep) {
-    merge.add(
-      gulp.src(dep.globs, {base: 'scripts'})
-        .pipe(concat(dep.name))
-        .pipe(minify())
-    );
+  manifest.forEachAsset('js', function(dep) {
+	merge.add(
+	  gulp.src(dep.globs, {base: 'scripts'})
+		.pipe(concat(dep.name))
+		.pipe(minify())
+	);
   });
   return merge
-    .pipe(gulp.dest('dist'));
+	.pipe(gulp.dest('dist'));
 });
 ```
 
@@ -166,19 +172,21 @@ gulp.src([
 
 ```json
 {
-  "dependencies": {
-    "app.js": {
-      "vendor": [
-        "../../plugins/WordPress-plugin/scripts/plugin.js"
-      ],
-      "files": ["scripts/main.js"],
-      "main": true
-    },
-  },
-  "paths": {
-    "source": "assets/",
-    "dist": "dist/"
-  }
+	"config": {
+		"paths": {
+			"source": "assets/",
+			"dist": "dist/"
+		}
+	},
+	"assets": {
+		"app.js": {
+			"vendor": [
+				"../../plugins/WordPress-plugin/scripts/plugin.js"
+			],
+			"files": ["scripts/main.js"],
+			"main": true
+		}
+	}
 }
 ```
 
@@ -187,7 +195,7 @@ gulp.src([
 ```js
 var manifest = require('asset-builder')('./assets/manifest.json');
 
-var app = manifest.getDependencyByName('app.js');
+var app = manifest.getAssetByName('app.js');
 
 gulp.src(app.globs)
   .pipe(concat(app.name))
@@ -197,13 +205,13 @@ gulp.src(app.globs)
 
 ### The Vendor Property
 
-The vendor property is a part of the [dependency serialization][dependency]. Why
+The vendor property is a part of the [asset serialization][asset]. Why
 would you use the `vendor` property instead of the `files` property? What kind
 of file paths would you put inside `vendor` but not inside `files`?
 
 A path inside the `files` property such as `scripts/main.js` will be transformed
 to `assets/scripts/main.js` if your manifest's `paths.source` is `assets/` and
-the dependency's `external` property is not set to `true`. The `vendor` property
+the asset's `external` property is not set to `true`. The `vendor` property
 paths are relative to your project root. If you are using gulp, this is
 typically where your gulpfile.js is located.
 
@@ -226,34 +234,34 @@ as:
 ├── gulpfile.js
 ├── assets/
 │   └── scripts/
-│       └── main.js
+│	   └── main.js
 └── vendor/
-    └── foundry/
-        └── flexslider.min.js
+	└── foundry/
+		└── flexslider.min.js
 </code></pre>
 
 <table class="table">
   <thead>
-    <tr>
-      <th>Property</th>
-      <th>Manifest Path</th>
-      <th>Refers to</th>
-    </tr>
+	<tr>
+	  <th>Property</th>
+	  <th>Manifest Path</th>
+	  <th>Refers to</th>
+	</tr>
   </thead>
   <tbody>
-    <tr>
-      <td><code>files</code></td>
-      <td><code>scripts/main.js</code></td>
-      <td><code>assets/scripts/main.js</code></td>
-    </tr>
-    <tr>
-      <td><code>vendor</code></td>
-      <td><code>vendor/foundry/flexslider.min.js</code></td>
-      <td><code>vendor/foundry/flexslider.min.js</code></td>
-    </tr>
+	<tr>
+	  <td><code>files</code></td>
+	  <td><code>scripts/main.js</code></td>
+	  <td><code>assets/scripts/main.js</code></td>
+	</tr>
+	<tr>
+	  <td><code>vendor</code></td>
+	  <td><code>vendor/foundry/flexslider.min.js</code></td>
+	  <td><code>vendor/foundry/flexslider.min.js</code></td>
+	</tr>
   </tbody>
 </table>
 
 [gulp]: http://gulpjs.com/
-[dependency]: spec.md#serialization-dependency
+[asset]: spec.md#serialization-asset
 [paths]: spec.md#serialization-paths

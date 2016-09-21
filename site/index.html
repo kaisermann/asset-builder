@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>asset-builder</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/superhero/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>asset-builder</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/superhero/bootstrap.min.css" rel="stylesheet">
+	<style type="text/css">
 pre .hll { background-color: #ffffcc }
 pre  { background: #f0f0f0; }
 pre .c { color: #60a0b0; font-style: italic } /* Comment */
@@ -133,89 +133,89 @@ pre .il { color: #40a070 } /* Literal.Number.Integer.Long */.syntax pre .hll { b
 .syntax pre .vg { color: #bb60d5 } /* Name.Variable.Global */
 .syntax pre .vi { color: #bb60d5 } /* Name.Variable.Instance */
 .syntax pre .il { color: #40a070 } /* Literal.Number.Integer.Long */
-    </style>
+	</style>
   </head>
   <body>
-    <!-- Add your site or application content here -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span class="navbar-brand">asset-builder</span>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="docco/">Annotated Source</a></li>
-          <li><a href="https://github.com/austinpray/asset-builder/blob/master/help/spec.md">Manifest Spec</a></li>
-          <li><a href="api/">Module Documentation</a></li>
-          <li><a href="https://github.com/austinpray/asset-builder">GitHub Repo</a></li>
-        </ul>
-      </div>
-    </nav>
-    <main class="container-fluid">
-      <div class="jumbotron text-center">
-        <h1>Build Better Gulpfiles</h1>
-        <p>asset-builder assembles and orchestrates your dependencies so you
-        can run them through your asset pipeline. Easily create gulp tasks you
-        can share between projects by separating config from code.</p>
-        <p>
-          <a
-             class="btn btn-primary btn-lg"
-             href="https://github.com/austinpray/asset-builder"
-             role="button">GitHub Repo</a>
-        </p>
-        <p>
-          <a href="https://www.npmjs.com/package/asset-builder">
-            <img src="https://badge.fury.io/js/asset-builder.svg" alt="npm version" height="18">
-          </a>
-          <a href="https://travis-ci.org/austinpray/asset-builder">
-            <img src="https://travis-ci.org/austinpray/asset-builder.svg?branch=master">
-          </a>
-          <a href="https://ci.appveyor.com/project/austinpray/asset-builder">
-            <img src="https://ci.appveyor.com/api/projects/status/grdwl6vflm7l68i6/branch/master?svg=true">
-          </a>
-          <a href='https://coveralls.io/r/austinpray/asset-builder?branch=master'>
-            <img src='https://coveralls.io/repos/austinpray/asset-builder/badge.svg?branch=master' alt='Coverage Status'>
-          </a>
-        </p>
-      </div>
+	<!-- Add your site or application content here -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <span class="navbar-brand">asset-builder</span>
+		</div>
+		<ul class="nav navbar-nav navbar-right">
+		  <li><a href="docco/">Annotated Source</a></li>
+		  <li><a href="https://github.com/austinpray/asset-builder/blob/master/help/spec.md">Manifest Spec</a></li>
+		  <li><a href="api/">Module Documentation</a></li>
+		  <li><a href="https://github.com/austinpray/asset-builder">GitHub Repo</a></li>
+		</ul>
+	  </div>
+	</nav>
+	<main class="container-fluid">
+	  <div class="jumbotron text-center">
+		<h1>Build Better Gulpfiles</h1>
+		<p>asset-builder assembles and orchestrates your assets so you
+		can run them through your asset pipeline. Easily create gulp tasks you
+		can share between projects by separating config from code.</p>
+		<p>
+		  <a
+			 class="btn btn-primary btn-lg"
+			 href="https://github.com/austinpray/asset-builder"
+			 role="button">GitHub Repo</a>
+		</p>
+		<p>
+		  <a href="https://www.npmjs.com/package/asset-builder">
+			<img src="https://badge.fury.io/js/asset-builder.svg" alt="npm version" height="18">
+		  </a>
+		  <a href="https://travis-ci.org/austinpray/asset-builder">
+			<img src="https://travis-ci.org/austinpray/asset-builder.svg?branch=master">
+		  </a>
+		  <a href="https://ci.appveyor.com/project/austinpray/asset-builder">
+			<img src="https://ci.appveyor.com/api/projects/status/grdwl6vflm7l68i6/branch/master?svg=true">
+		  </a>
+		  <a href='https://coveralls.io/r/austinpray/asset-builder?branch=master'>
+			<img src='https://coveralls.io/repos/austinpray/asset-builder/badge.svg?branch=master' alt='Coverage Status'>
+		  </a>
+		</p>
+	  </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <h2 class="page-header">Automate Repetitive Glob Building.</h2>
-          <div class="row">
-            <div class="col-md-6">
-              <p class="lead">asset-builder allows you to declare the output of your Gulpfile in an external manifest file.</p>
-            </div>
-            <div class="col-md-6">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">manifest.json</h3>
-                </div>
-                <div class="panel-body">
-                  <div class="hlcode">
-                    <div class="syntax"><pre><span class="p">{</span>
+	  <div class="row">
+		<div class="col-md-12">
+		  <h2 class="page-header">Automate Repetitive Glob Building.</h2>
+		  <div class="row">
+			<div class="col-md-6">
+			  <p class="lead">asset-builder allows you to declare the output of your Gulpfile in an external manifest file.</p>
+			</div>
+			<div class="col-md-6">
+			  <div class="panel panel-default">
+				<div class="panel-heading">
+				  <h3 class="panel-title">manifest.json</h3>
+				</div>
+				<div class="panel-body">
+				  <div class="hlcode">
+					<div class="syntax"><pre><span class="p">{</span>
   <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;app.js&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;files&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;scripts/services/**/*.js&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;scripts/controllers.js&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;scripts/main.js&quot;</span>
-      <span class="p">],</span>
-      <span class="nt">&quot;main&quot;</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">}</span>
+	<span class="nt">&quot;app.js&quot;</span><span class="p">:</span> <span class="p">{</span>
+	  <span class="nt">&quot;files&quot;</span><span class="p">:</span> <span class="p">[</span>
+		<span class="s2">&quot;scripts/services/**/*.js&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;scripts/controllers.js&quot;</span><span class="p">,</span>
+		<span class="s2">&quot;scripts/main.js&quot;</span>
+	  <span class="p">],</span>
+	  <span class="nt">&quot;main&quot;</span><span class="p">:</span> <span class="kc">true</span>
+	<span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span></pre></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <p>So you can stop doing this...</p>
-              <div class="panel panel-danger">
-                <div class="panel-heading">
-                  <h3 class="panel-title">gulpfile.js</h3>
-                </div>
-                <div class="panel-body">
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col-md-6">
+			  <p>So you can stop doing this...</p>
+			  <div class="panel panel-danger">
+				<div class="panel-heading">
+				  <h3 class="panel-title">gulpfile.js</h3>
+				</div>
+				<div class="panel-body">
 <div class="hlcode">
 <div class="syntax"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
   <span class="s1">&#39;bower_components/jquery/jquery.js&#39;</span><span class="p">,</span>
@@ -229,87 +229,87 @@ pre .il { color: #40a070 } /* Literal.Number.Integer.Long */.syntax pre .hll { b
   <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <p>...and start doing this</p>
-              <div class="panel panel-success">
-                <div class="panel-heading">
-                  <h3 class="panel-title">gulpfile.js</h3>
-                </div>
-                <div class="panel-body">
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-6">
+			  <p>...and start doing this</p>
+			  <div class="panel panel-success">
+				<div class="panel-heading">
+				  <h3 class="panel-title">gulpfile.js</h3>
+				</div>
+				<div class="panel-body">
 <div class="hlcode">
 <div class="syntax"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">js</span><span class="p">.</span><span class="nx">globs</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">js</span><span class="p">.</span><span class="nx">name</span><span class="p">))</span>
   <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">minify</span><span class="p">())</span>
   <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">manifest</span><span class="p">.</span><span class="nx">paths</span><span class="p">.</span><span class="nx">dist</span><span class="p">));</span>
 </pre></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <h2 class="page-header">Automate Repetitive Glob Building.</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <h3>Install</h3>
-          <div class="panel panel-default ">
-            <div class="panel-body">
-              <kbd>
-                npm install asset-builder --save-dev
-              </kbd>
-            </div>
-            <div class="panel-footer">In your project directory.</div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <h3>Use</h3>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="hlcode">
-                <div class="syntax"><pre><span class="kd">var</span> <span class="nx">manifest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;asset-builder&#39;</span><span class="p">)(</span><span class="s1">&#39;./assets/manifest.json&#39;</span><span class="p">);</span></pre></div>
-              </div>
-            </div>
-            <div class="panel-footer">In your Gulpfile.</div>
-          </div>
-          <div class="list-group">
-            <a href="https://github.com/austinpray/asset-builder/tree/master/help" class="list-group-item">
-              <h4 class="list-group-item-heading">Examples</h4>
-            </a>
-            <a href="https://github.com/austinpray/asset-builder/blob/master/help/spec.md" class="list-group-item">
-              <h4 class="list-group-item-heading">Manifest Specification</h4>
-              <p class="list-group-item-text">Learn about the JSON manifest asset-builder reads.</p>
-            </a>
-            <a href="api/" class="list-group-item">
-              <h4 class="list-group-item-heading">Module API Documentation</h4>
-              <p class="list-group-item-text">Detailed rundown of asset-builder's public and private API.</p>
-            </a>
-            <a href="docco/" class="list-group-item">
-              <h4 class="list-group-item-heading">Annotated Source</h4>
-              <p class="list-group-item-text">Walk through the asset-builder source line by line.</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </main>
-    <footer class="text-center">
-      <p><small>Built with much love by <a href="http://austinpray.com">Austin Pray</a></small></p>
-    </footer>
+	  <div class="row">
+		<div class="col-md-12">
+		  <h2 class="page-header">Automate Repetitive Glob Building.</h2>
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col-md-6">
+		  <h3>Install</h3>
+		  <div class="panel panel-default ">
+			<div class="panel-body">
+			  <kbd>
+				npm install asset-builder --save-dev
+			  </kbd>
+			</div>
+			<div class="panel-footer">In your project directory.</div>
+		  </div>
+		</div>
+		<div class="col-md-6">
+		  <h3>Use</h3>
+		  <div class="panel panel-default">
+			<div class="panel-body">
+			  <div class="hlcode">
+				<div class="syntax"><pre><span class="kd">var</span> <span class="nx">manifest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;asset-builder&#39;</span><span class="p">)(</span><span class="s1">&#39;./assets/manifest.json&#39;</span><span class="p">);</span></pre></div>
+			  </div>
+			</div>
+			<div class="panel-footer">In your Gulpfile.</div>
+		  </div>
+		  <div class="list-group">
+			<a href="https://github.com/austinpray/asset-builder/tree/master/help" class="list-group-item">
+			  <h4 class="list-group-item-heading">Examples</h4>
+			</a>
+			<a href="https://github.com/austinpray/asset-builder/blob/master/help/spec.md" class="list-group-item">
+			  <h4 class="list-group-item-heading">Manifest Specification</h4>
+			  <p class="list-group-item-text">Learn about the JSON manifest asset-builder reads.</p>
+			</a>
+			<a href="api/" class="list-group-item">
+			  <h4 class="list-group-item-heading">Module API Documentation</h4>
+			  <p class="list-group-item-text">Detailed rundown of asset-builder's public and private API.</p>
+			</a>
+			<a href="docco/" class="list-group-item">
+			  <h4 class="list-group-item-heading">Annotated Source</h4>
+			  <p class="list-group-item-text">Walk through the asset-builder source line by line.</p>
+			</a>
+		  </div>
+		</div>
+	  </div>
+	</main>
+	<footer class="text-center">
+	  <p><small>Built with much love by <a href="http://austinpray.com">Austin Pray</a></small></p>
+	</footer>
 
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-                                                              function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-58607549-1','auto');ga('send','pageview');
-    </script>
+	<script>
+	  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+															  function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+	  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+	  e.src='//www.google-analytics.com/analytics.js';
+	  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+	  ga('create','UA-58607549-1','auto');ga('send','pageview');
+	</script>
   </body>
 </html>
