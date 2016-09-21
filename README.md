@@ -25,3 +25,8 @@ var manifest = require('asset-builder')('./assets/manifest.json');
 - [Manifest File Specification](help/spec.md)
 - [View this module's API documentation](http://use-asset-builder.austinpray.com/api/)
 - [Walk through the annotated source code](http://use-asset-builder.austinpray.com/docco/)
+
+## TO-DO
+
+- Modify current documentation
+- Add new documentation and examples
