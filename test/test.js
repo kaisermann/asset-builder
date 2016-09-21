@@ -54,7 +54,7 @@ describe('JSON Reading and Parsing', function () {
 
 describe('Processing the Manifest', function () {
 	var manifest;
-	it('should throw an error if the json file is missing the "dependencies" property', function () {
+	it('should throw an error if the json file is missing the "assets" property', function () {
 		assert.throws(function () {
 			manifest = processManifest(readManifest('test/fixtures/manifest-missing.json'));
 		}, Error, 'Manifest File Error: missing');
@@ -66,13 +66,13 @@ describe('Processing the Manifest', function () {
 	});
 	it('should turn all "files" strings into arrays', function () {
 		manifest = processManifest(readManifest('test/fixtures/manifest-mixed.json'));
-		assert.isArray(manifest.dependencies.styles['app.css'].files);
-		assert.isArray(manifest.dependencies.scripts['home.js'].files);
+		assert.isArray(manifest.assets.styles['app.css'].files);
+		assert.isArray(manifest.assets.scripts['home.js'].files);
 	});
 	it('should append the source dir to all files arrays except external', function () {
 		manifest = processManifest(readManifest('test/fixtures/manifest-v1.json'));
-		assert.equal(manifest.dependencies.styles['app.css'].files[0], 'assets/styles/main.less');
-		assert.equal(manifest.dependencies.scripts['noappend.js'].files[0], '../themedir/home.js');
+		assert.equal(manifest.assets.styles['app.css'].files[0], 'assets/styles/main.less');
+		assert.equal(manifest.assets.scripts['noappend.js'].files[0], '../themedir/home.js');
 	});
 });
 
@@ -206,7 +206,7 @@ describe('Glob building', function () {
 	});
 
 	describe('output globs', function () {
-		var dependencies = {
+		var assets = {
 			"scripts": {
 				"app.js": {
 					files: ['path/to/script.js']
@@ -233,14 +233,14 @@ describe('Glob building', function () {
 			'/bower_components/lol/images/imageGIF.gif'
 		];
 		it('should output a fonts glob', function () {
-			assert.sameMembers(new buildGlobs(defaultTypes, dependencies, bower).globs.fonts.globs, [
+			assert.sameMembers(new buildGlobs(defaultTypes, assets, bower).globs.fonts.globs, [
 				'/bower_components/lol/fonts/test.woff',
 				'/bower_components/lol/fonts/test.woff2',
 				'font/path/*'
 			]);
 		});
 		it('should output an images glob', function () {
-			assert.sameMembers(new buildGlobs(defaultTypes, dependencies, bower).globs.images.globs, [
+			assert.sameMembers(new buildGlobs(defaultTypes, assets, bower).globs.images.globs, [
 				'/bower_components/lol/images/imageJPG.jpg',
 				'/bower_components/lol/images/imagePNG.png',
 				'/bower_components/lol/images/imageGIF.gif',
@@ -248,7 +248,7 @@ describe('Glob building', function () {
 			]);
 		});
 		it('should output a bower glob', function () {
-			assert.sameMembers(new buildGlobs(defaultTypes, dependencies, bower).globs.bower, bower);
+			assert.sameMembers(new buildGlobs(defaultTypes, assets, bower).globs.bower, bower);
 		});
 	});
 
@@ -400,7 +400,7 @@ describe('convenience methods', function () {
 	describe('getProjectGlobs', function () {
 		it('should return project JS', function () {
 			var proj = m.Manifest.prototype.getProjectGlobs.call({
-				dependencies: {
+				assets: {
 					"scripts": {
 						"app.js": {
 							files: [
@@ -427,7 +427,7 @@ describe('convenience methods', function () {
 		});
 		it('should return project CSS', function () {
 			var proj = m.Manifest.prototype.getProjectGlobs.call({
-				dependencies: {
+				assets: {
 					"styles": {
 						"app.css": {
 							files: [
@@ -486,7 +486,7 @@ describe('convenience methods', function () {
 		});
 	});
 	describe('foreach dep', function () {
-		it('should loop through the dependencies', function () {
+		it('should loop through the assets', function () {
 			var count = 0;
 			m.Manifest.prototype.forEachDependency.call({
 				globs: {

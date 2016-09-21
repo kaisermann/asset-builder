@@ -12,7 +12,7 @@
 			"sounds": "*.{mp3,wav}"
 		}
 	},
-	"dependencies": {
+	"assets": {
 		"scripts": {
 			"app.js": {
 				"files": [

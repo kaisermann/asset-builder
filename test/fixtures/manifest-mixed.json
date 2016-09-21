@@ -7,7 +7,7 @@
 			"images": "*.{jpg,jpeg,webp,png,gif}"
 		}
 	},
-	"dependencies": {
+	"assets": {
 		"scripts": {
 			"app.js": {
 				"files": [

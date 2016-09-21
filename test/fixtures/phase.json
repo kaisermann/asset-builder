@@ -15,7 +15,7 @@
 			"sounds": "*.{mp3,wav}"
 		}
 	},
-	"dependencies": {
+	"assets": {
 		"sounds": {
 			"*": {
 				"files": [
