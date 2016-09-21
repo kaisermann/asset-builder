@@ -2,7 +2,9 @@
 	"config": {
 		"paths": {
 			"source": "assets/",
-			"dist": "dist/"
+			"dist": "dist/",
+			"bowerDirectory": "test/tmp/bower_components",
+			"bowerJson": "test/tmp/bower.json"
 		},
 		"fileTypes": {
 			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",

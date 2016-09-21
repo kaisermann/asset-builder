@@ -32,55 +32,11 @@ var log = function (o, m) {
 // });
 //log(output);
 //log(output.getProjectGlobs());
-// var output2 = m('test/fixtures/sage.json', {
-// 	paths: {
-// 		bowerDirectory: 'test/tmp/bower_components',
-// 		bowerJson: 'test/tmp/bower.json'
-// 	}
-// });
-// log(output2);
-
-// var css = output.getDependencyByName.call(output.globs, 'main.css');
-// var js = output.getDependencyByName.call(output.globs, 'set.js');
-// log(css);
-// log(js);
-var mockBower = [
-	"/asset-builder/bower_components/jquery/dist/jquery.js",
-	"/asset-builder/bower_components/bootstrap/js/transition.js",
-	"/asset-builder/bower_components/bootstrap/js/alert.js",
-];
-
-var expected = [{
-	type: 'js',
-	name: 'app.js',
-	globs: [
-		path.normalize("/asset-builder/bower_components/bootstrap/js/transition.js"),
-		path.normalize("/asset-builder/bower_components/bootstrap/js/alert.js"),
-		"path/to/script.js"
-	]
-},
-	{
-		type: 'js',
-		name: 'jquery.js',
-		globs: [
-			path.normalize("/asset-builder/bower_components/jquery/dist/jquery.js"),
-		]
-				}
-];
-var defaultTypes = {
-	"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
-	"scripts": "*.js",
-	"styles": "*.css",
-	"images": "*.{jpg,png,gif}"
-}
-var buildGlob = new buildGlobs(defaultTypes, {
-	"scripts": {
-		"app.js": {
-			files: ['path/to/script.js'],
-			main: true
-		},
-		"jquery.js": {
-			bower: ['jquery']
-		}
+var output2 = m('test/fixtures/phase.json', {
+	paths: {
+		bowerDirectory: 'test/tmp/bower_components',
+		bowerJson: 'test/tmp/bower.json'
 	}
-}, mockBower);
+});
+//log(output2);
+log(output2.getDependencyByName("app.css"));

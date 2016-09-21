@@ -3,7 +3,9 @@
 		/* Must-have options */
 		"paths": {
 			"source": "assets/",
-			"dist": "dist/"
+			"dist": "dist/",
+			"bowerDirectory": "test/tmp/bower_components",
+			"bowerJson": "test/tmp/bower.json"
 		},
 		"fileTypes": {
 			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
@@ -11,21 +13,6 @@
 			"styles": "*.{css,styl,less,scss}",
 			"images": "*.{jpg,jpeg,webp,png,gif}",
 			"sounds": "*.{mp3,wav}"
-		},
-		/* Optional and extra attributes */
-		"supportedBrowsers": [
-			"last 2 versions",
-			"android 4",
-			"opera 12"
-		],
-		"browserSync": {
-			"devUrl": "localhost/phase",
-			"whitelist": [],
-			"blacklist": []
-		},
-		"tasks": {
-			"scripts": "scripts",
-			"styles2": "styles"
 		}
 	},
 	"dependencies": {
@@ -44,10 +31,14 @@
 				"vendor": [
 					"assets/scripts/vendor/*.js"
 				],
-				"bower": ["jquery"]
+				"bower": [
+					"jquery"
+				]
 			},
 			"set.js": {
-				"bower": ["modernizr"]
+				"bower": [
+					"modernizr"
+				]
 			}
 		},
 		"styles": {
@@ -59,7 +50,9 @@
 					"assets/styles/vendor/reset.css",
 					"assets/styles/vendor/*.css"
 				],
-				"bower": ["bootstrap"]
+				"bower": [
+					"bootstrap"
+				]
 			}
 		},
 		"fonts": {
@@ -67,7 +60,9 @@
 				"files": [
 					"fonts/**/*"
 				],
-				"bower": ["bootstrap"]
+				"bower": [
+					"bootstrap"
+				]
 			}
 		},
 		"images": {
