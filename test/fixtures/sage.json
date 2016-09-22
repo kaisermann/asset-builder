@@ -1,49 +1,52 @@
 {
-	"config": {
-		"fileTypes": {
-			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
-			"scripts": "*.js",
-			"styles": "*.css",
-			"images": "*.{jpg,png,gif}",
-			"sounds": "*.{mp3,wav}"
-		}
-	},
-	"assets": {
+	"resources": {
 		"scripts": {
-			"app.js": {
-				"files": [
-					"scripts/**/*",
-					"scripts/main.js"
-				],
-				"main": true
-			},
-			"jquery.js": {
-				"bower": [
-					"jquery"
-				]
-			},
-			"modernizr.js": {
-				"bower": [
-					"modernizr"
-				]
+			"pattern": "*.js",
+			"directory": "scripts",
+			"assets": {
+				"app.js": {
+					"files": [
+						"scripts/**/*",
+						"scripts/main.js"
+					],
+					"main": true
+				},
+				"jquery.js": {
+					"bower": [
+						"jquery"
+					]
+				},
+				"modernizr.js": {
+					"bower": [
+						"modernizr"
+					]
+				}
 			}
 		},
 		"styles": {
-			"app.css": {
-				"files": [
-					"styles/main.less"
-				],
-				"bower": [
-					"bootstrap"
-				],
-				"main": true
+			"pattern": "*.css",
+			"directory": "styles",
+			"assets": {
+				"app.css": {
+					"files": [
+						"styles/main.less"
+					],
+					"bower": [
+						"bootstrap"
+					],
+					"main": true
+				}
 			}
 		},
 		"images": {
-			"/": {
-				"files": [
-					"images/**/*"
-				]
+			"pattern": "*.{jpg,png,gif}",
+			"directory": "images",
+			"assets": {
+				"/": {
+					"files": [
+						"images/**/*"
+					]
+				}
 			}
 		}
 	}

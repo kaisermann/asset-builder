@@ -1,74 +1,92 @@
 {
 	"config": {
-		/* Must-have options */
 		"paths": {
+			/* Don't forget the trailing '/' */
 			"source": "assets/",
-			"dist": "dist/"
+			"dist": "dist/",
+			"bowerDirectory": "test/tmp/bower_components",
+			"bowerJson": "test/tmp/bower.json"
 		},
-		"fileTypes": {
-			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
-			"scripts": "*.js",
-			"styles": "*.{css,styl,less,scss}",
-			"images": "*.{jpg,jpeg,webp,png,gif}",
-			"sounds": "*.{mp3,wav}"
-		}
+		/* phase: mandatory parameters */
+		"supportedBrowsers": [
+			"last 2 versions",
+			"android 4",
+			"opera 12"
+		],
+		"browserSync": {
+			"files": [
+				"{lib,templates}/**/*.{php,html}",
+				"*.{php,html}"
+			],
+			"whitelist": [],
+			"blacklist": [],
+			"devUrl": "localhost/phase"
+		},
+		/* phase: optional parameters */
+		/*
+		 * Simple tasks are automatically created independent tasks that mainly move files
+		 * without any complicated logic.
+		 * It's possible to assign a helper in the middle of the task stream by setting
+		 * it in the taskHelpers object inside your gulpfile (see taskHelpers.images).
+		 */
+		"simpleTasks": [
+			"fonts",
+			"images"
+		]
 	},
-	"assets": {
+	/* File-type-name (scripts, styles...) must match its related task-name and asset-type-name */
+	"resources": {
 		"scripts": {
-			"scriptin/main.js": {
-				"main": true,
-				"files": [
-					"scripts/wrapper.js"
-				],
-				"vendor": [
-					"assets/scripts/vendor/*.js"
-				],
-				"bower": [
-					"jquery"
-				]
-			},
-			"set.js": {
-				"bower": [
-					"modernizr"
-				]
+			"pattern": "*.js",
+			"directory": "scripts",
+			"assets": {
+				"main.js": {
+					"main": true,
+					"files": "scripts/wrapper.js",
+					"vendor": [
+						"assets/scripts/vendor/*.js"
+					],
+					"bower": []
+				}
 			}
 		},
 		"styles": {
-			"main.css": {
-				"files": [
-					"styles/wrapper.styl"
-				],
-				"vendor": [
-					"assets/styles/vendor/reset.css",
-					"assets/styles/vendor/*.css"
-				],
-				"bower": [
-					"bootstrap"
-				]
+			"pattern": "*.{css,styl,less,scss}",
+			"directory": "styles",
+			"assets": {
+				"main.css": {
+					"main": true,
+					"files": [
+						"styles/wrapper.styl"
+					],
+					"vendor": [
+						"assets/styles/vendor/reset.css",
+						"assets/styles/vendor/*.css"
+					],
+					"bower": []
+				}
 			}
 		},
 		"fonts": {
-			"/": {
-				"files": [
-					"fonts/**/*"
-				],
-				"bower": [
-					"bootstrap"
-				]
+			"pattern": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
+			"directory": "fonts",
+			"assets": {
+				"/": {
+					"files": [
+						"fonts/**/*"
+					]
+				}
 			}
 		},
 		"images": {
-			"/": {
-				"files": [
-					"images/**/*"
-				]
-			}
-		},
-		"sounds": {
-			"/": {
-				"files": [
-					"sounds/**/*"
-				]
+			"pattern": "*.{jpg,png,gif}",
+			"directory": "images",
+			"assets": {
+				"/": {
+					"files": [
+						"images/**/*"
+					]
+				}
 			}
 		}
 	}

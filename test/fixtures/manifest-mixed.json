@@ -1,43 +1,44 @@
 {
-	"config": {
-		"fileTypes": {
-			"fonts": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
-			"scripts": "*.js",
-			"styles": "*.{css,styl,less,scss}",
-			"images": "*.{jpg,jpeg,webp,png,gif}"
-		}
-	},
-	"assets": {
+	"config": {},
+	"resources": {
 		"scripts": {
-			"app.js": {
-				"files": [
-					"scripts/**/*",
-					"scripts/main.js"
-				],
-				"main": true,
-				"vendor": []
-			},
-			"home.js": {
-				"files": "scripts/home.js",
-				"bower": [
-					"slick.js"
-				]
-			},
-			"jquery.js": {
-				"bower": [
-					"jquery"
-				]
-			},
-			"modernizr.js": {
-				"bower": [
-					"modernizr.js"
-				]
+			"pattern": "*.js",
+			"directory": "scripts",
+			"assets": {
+				"app.js": {
+					"files": [
+						"scripts/**/*",
+						"scripts/main.js"
+					],
+					"main": true,
+					"vendor": []
+				},
+				"home.js": {
+					"files": "scripts/home.js",
+					"bower": [
+						"slick.js"
+					]
+				},
+				"jquery.js": {
+					"bower": [
+						"jquery"
+					]
+				},
+				"modernizr.js": {
+					"bower": [
+						"modernizr.js"
+					]
+				}
 			}
 		},
 		"styles": {
-			"app.css": {
-				"files": "styles/main.less",
-				"main": true
+			"pattern": "*.{css,styl,less,scss}",
+			"directory": "styles",
+			"assets": {
+				"app.css": {
+					"files": "styles/main.less",
+					"main": true
+				}
 			}
 		}
 	}
