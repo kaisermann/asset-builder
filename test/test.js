@@ -17,20 +17,16 @@ var path = require('path');
 
 var defaultTypes = {
     "scripts": {
-        "pattern": "*.js",
-        "directory": "scripts"
+        "pattern": "*.js"
     },
     "styles": {
-        "pattern": "*.css",
-        "directory": "styles"
+        "pattern": "*.css"
     },
     "fonts": {
-        "pattern": "*.{eot,otf,svg,ttc,ttf,woff,woff2}",
-        "directory": "fonts"
+        "pattern": "*.{eot,otf,svg,ttc,ttf,woff,woff2}"
     },
     "images": {
-        "pattern": "*.{jpg,png,gif}",
-        "directory": "images"
+        "pattern": "*.{jpg,png,gif}"
     }
 }
 
@@ -304,7 +300,7 @@ describe('Glob building', function () {
             var expected = [
                 {
                     type: 'js',
-                    name: 'app.js',
+                    outputName: 'app.js',
                     globs: [
                         path.normalize("/asset-builder/bower_components/bootstrap/js/transition.js"),
                         path.normalize("/asset-builder/bower_components/bootstrap/js/alert.js"),
@@ -313,7 +309,7 @@ describe('Glob building', function () {
                 },
                 {
                     type: 'js',
-                    name: 'jquery.js',
+                    outputName: 'jquery.js',
                     globs: [
                         path.normalize("/asset-builder/bower_components/jquery/dist/jquery.js"),
                     ]
@@ -365,13 +361,13 @@ describe('Integration Tests', function () {
 
                 // app.css
                 assert.equal(output.globs.styles[0].type, 'css');
-                assert.equal(output.globs.styles[0].output, 'app.css');
+                assert.equal(output.globs.styles[0].outputName, 'app.css');
                 assert.lengthOf(output.globs.styles[0].globs, 1);
                 assert.include(output.globs.styles[0].globs[0], 'main.less');
 
                 // app.js
                 assert.equal(output.globs.scripts[0].type, 'js');
-                assert.equal(output.globs.scripts[0].output, 'app.js');
+                assert.equal(output.globs.scripts[0].outputName, 'app.js');
                 assert.include(output.globs.scripts[0].globs, 'assets/scripts/**/*');
                 _.forEach(output.globs.scripts[0].globs, function (s) {
                     assert.notInclude(s, 'jquery');
@@ -380,13 +376,13 @@ describe('Integration Tests', function () {
 
                 // jquery.js
                 assert.equal(output.globs.scripts[1].type, 'js');
-                assert.equal(output.globs.scripts[1].output, 'jquery.js');
+                assert.equal(output.globs.scripts[1].outputName, 'jquery.js');
                 assert.lengthOf(output.globs.scripts[1].globs, 1);
                 assert.include(output.globs.scripts[1].globs[0], 'jquery.js');
 
                 // modernizr.js
                 assert.equal(output.globs.scripts[2].type, 'js');
-                assert.equal(output.globs.scripts[2].output, 'modernizr.js');
+                assert.equal(output.globs.scripts[2].outputName, 'modernizr.js');
                 assert.lengthOf(output.globs.scripts[2].globs, 1);
                 assert.include(output.globs.scripts[2].globs[0], 'modernizr.js');
 
@@ -408,17 +404,18 @@ describe('Integration Tests', function () {
                 });
 
                 var globs = output.globs;
-                assert.sameMembers(_.find(globs.scripts, { output: 'external.js' }).globs, [
+
+                assert.sameMembers(_.find(globs.scripts, { outputName: 'external.js' }).globs, [
                     '../../noappend.js'
                 ]);
 
-                assert.sameMembers(_.find(globs.scripts, { output: 'vendor.js' }).globs, [
+                assert.sameMembers(_.find(globs.scripts, { outputName: 'vendor.js' }).globs, [
                     '../../plugin/script.js',
                     'assets/scripts/somescript.js'
                 ]);
 
-                assert.equal(_.find(globs.scripts, { output: 'vendor.js' }).globs[0], '../../plugin/script.js');
-                assert.equal(_.find(globs.scripts, { output: 'vendor.js' }).globs[1], 'assets/scripts/somescript.js');
+                assert.equal(_.find(globs.scripts, { outputName: 'vendor.js' }).globs[0], '../../plugin/script.js');
+                assert.equal(_.find(globs.scripts, { outputName: 'vendor.js' }).globs[1], 'assets/scripts/somescript.js');
 
             });
         });
@@ -485,20 +482,20 @@ describe('convenience methods', function () {
                 [{
                     type: 'css',
                     resourceName: 'styles',
-                    output: 'main.css',
+                    outputName: 'main.css',
                     globs: []
                 },
                     {
                         type: 'css',
                         resourceName: 'styles',
-                        output: 'editor-style.css',
+                        outputName: 'editor-style.css',
                         globs: []
                     }],
                 js: [
                     {
                         type: 'js',
                         resourceName: 'scripts',
-                        output: 'script.js',
+                        outputName: 'script.js',
                         globs: [
                             'class.js',
                             'important.js'
@@ -507,10 +504,20 @@ describe('convenience methods', function () {
                     {
                         type: 'js',
                         resourceName: 'scripts',
-                        output: 'test.js',
+                        outputName: 'test.js',
                         globs: [
                             'class.js',
                             'important.js'
+                        ]
+                    }
+                ],
+                images: [
+                    {
+                        type: 'directory',
+                        resourceName: 'images',
+                        outputName: '/',
+                        globs: [
+                            'images/**/*'
                         ]
                     }
                 ]
@@ -519,8 +526,9 @@ describe('convenience methods', function () {
         it('should get a css asset by name', function () {
             var css = m.Manifest.prototype.getResourceByOutputName.call(globs, 'main.css');
             var js = m.Manifest.prototype.getResourceByOutputName.call(globs, 'test.js');
-            assert.equal('main.css', css.output);
-            assert.equal('test.js', js.output);
+            var imgs = m.Manifest.prototype.getResourceByOutputName.call(globs, 'images/');
+            assert.equal('main.css', css.outputName);
+            assert.equal('test.js', js.outputName);
         });
     });
     describe('foreach asset', function () {
@@ -530,16 +538,18 @@ describe('convenience methods', function () {
                 globs: {
                     scripts: [
                         {
-                            type: 'scripts',
-                            name: 'script.js',
+                            type: 'js',
+                            resourceName: 'scripts',
+                            outputName: 'script.js',
                             globs: [
                                 'class.js',
                                 'important.js'
                             ]
                         },
                         {
-                            type: 'scripts',
-                            name: 'test.js',
+                            type: 'js',
+                            resourceName: 'scripts',
+                            outputName: 'test.js',
                             globs: [
                                 'class.js',
                                 'important.js'
@@ -549,7 +559,7 @@ describe('convenience methods', function () {
                 }
             }, 'scripts', function (value) {
                 count += 1;
-                assert.equal(value.type, 'scripts');
+                assert.equal(value.type, 'js');
                 assert.sameMembers(value.globs, [
                     'class.js',
                     'important.js'
