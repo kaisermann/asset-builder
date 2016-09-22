@@ -1,6 +1,6 @@
 {
   "name": "asset-builder",
-  "version": "1.2.0-alpha.2",
+  "version": "1.2.0-alpha.3",
   "description": "assembles and orchestrates your assets so you can run them through your asset pipeline.",
   "main": "index.js",
   "scripts": {
