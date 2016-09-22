@@ -329,7 +329,7 @@ describe('Glob building', function () {
                     }
                 }
             }, mockBower);
-            //console.log(buildGlob.globs.scripts[0]);
+
             assert.sameMembers(buildGlob.globs.scripts[0].globs, expected[0].globs, 'app.js not the same');
             assert.sameMembers(buildGlob.globs.scripts[1].globs, expected[1].globs, 'jquery not the same');
         });
