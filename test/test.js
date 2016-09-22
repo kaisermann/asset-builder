@@ -408,7 +408,6 @@ describe('Integration Tests', function () {
 				});
 
 				var globs = output.globs;
-				console.log(globs.scripts);
 				assert.sameMembers(_.find(globs.scripts, { output: 'external.js' }).globs, [
 					'../../noappend.js'
 				]);
@@ -432,22 +431,24 @@ describe('convenience methods', function () {
 			var proj = m.Manifest.prototype.getProjectGlobs.call({
 				resources: {
 					"scripts": {
-						"app.js": {
-							files: [
-								"app.js",
-								"script.js"
-							]
-						},
-						"cool.js": {
-							files: [
-								"cool1.js",
-								"cool2.js"
-							]
+						"assets": {
+							"app.js": {
+								files: [
+									"app.js",
+									"script.js"
+								]
+							},
+							"cool.js": {
+								files: [
+									"cool1.js",
+									"cool2.js"
+								]
+							}
 						}
 					}
 				}
 			});
-			console.log(proj);
+
 			assert.isArray(proj.scripts);
 			assert.sameMembers(proj.scripts, [
 				'app.js',
@@ -460,11 +461,13 @@ describe('convenience methods', function () {
 			var proj = m.Manifest.prototype.getProjectGlobs.call({
 				resources: {
 					"styles": {
-						"app.css": {
-							files: [
-								"app.less",
-								"styles.scss"
-							]
+						"assets": {
+							"app.css": {
+								files: [
+									"app.less",
+									"styles.scss"
+								]
+							}
 						}
 					}
 				}
@@ -480,18 +483,18 @@ describe('convenience methods', function () {
 			globs: {
 				css:
 				[{
-					type: 'css',
+					type: 'styles',
 					name: 'main.css',
 					globs: []
 				},
 					{
-						type: 'css',
+						type: 'styles',
 						name: 'editor-style.css',
 						globs: []
 					}],
 				js: [
 					{
-						type: 'js',
+						type: 'scripts',
 						name: 'script.js',
 						globs: [
 							'class.js',
@@ -499,7 +502,7 @@ describe('convenience methods', function () {
 						]
 					},
 					{
-						type: 'js',
+						type: 'scripts',
 						name: 'test.js',
 						globs: [
 							'class.js',
