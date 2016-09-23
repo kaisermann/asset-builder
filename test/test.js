@@ -524,11 +524,12 @@ describe('convenience methods', function () {
             }
         };
         it('should get a css asset by name', function () {
-            var css = m.Manifest.prototype.getResourceByOutputName.call(globs, 'main.css');
-            var js = m.Manifest.prototype.getResourceByOutputName.call(globs, 'test.js');
-            var imgs = m.Manifest.prototype.getResourceByOutputName.call(globs, 'images/');
+            var css = m.Manifest.prototype.getAssetByOutputName.call(globs, 'main.css');
+            var js = m.Manifest.prototype.getAssetByOutputName.call(globs, 'test.js');
+            var imgs = m.Manifest.prototype.getAssetByOutputName.call(globs, 'images/');
             assert.equal('main.css', css.outputName);
             assert.equal('test.js', js.outputName);
+            assert.notEqual(undefined, imgs);
         });
     });
     describe('foreach asset', function () {
