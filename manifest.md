@@ -1,5 +1,5 @@
 
-# asset-builder Manifest Specification
+# asset-orchestrator Manifest Specification
 Heavily based on [Manifest Specification from austinpray](https://github.com/austinpray/asset-builder/blob/master/help/spec.md)
 
 ## JSON Serialization

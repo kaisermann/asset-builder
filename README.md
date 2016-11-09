@@ -1,12 +1,12 @@
-asset-builder
+asset-orchestrator
 =============
 
-**Note: This project has been drastically modified from its original branch.**
+**Note: This project has been drastically modified from its original repository.**
 
 ## Usage
 
 ```javascript
-var manifest = require('asset-builder')('./assets/manifest.json');
+var manifest = require('asset-orchestrator')('./assets/manifest.json');
 ```
 
 ## Help
