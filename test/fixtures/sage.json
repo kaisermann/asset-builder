@@ -1,53 +1,51 @@
 {
-	"resources": {
-		"scripts": {
-			"pattern": "*.js",
-			"directory": "scripts",
-			"assets": {
-				"app.js": {
-					"files": [
+  "resources": {
+    "scripts": {
+      "pattern": "*.js",
+      "directory": "scripts",
+      "assets": {
+        "app.js": {
+          "files": [
 						"scripts/**/*",
 						"scripts/main.js"
-					],
-					"main": true
-				},
-				"jquery.js": {
-					"bower": [
+					]
+        },
+        "jquery.js": {
+          "bower": [
 						"jquery"
 					]
-				},
-				"modernizr.js": {
-					"bower": [
+        },
+        "modernizr.js": {
+          "bower": [
 						"modernizr"
 					]
-				}
-			}
-		},
-		"styles": {
-			"pattern": "*.css",
-			"directory": "styles",
-			"assets": {
-				"app.css": {
-					"files": [
+        }
+      }
+    },
+    "styles": {
+      "pattern": "*.css",
+      "directory": "styles",
+      "assets": {
+        "app.css": {
+          "files": [
 						"styles/main.less"
 					],
-					"bower": [
+          "bower": [
 						"bootstrap"
-					],
-					"main": true
-				}
-			}
-		},
-		"images": {
-			"pattern": "*.{jpg,png,gif}",
-			"directory": "images",
-			"assets": {
-				"/": {
-					"files": [
+					]
+        }
+      }
+    },
+    "images": {
+      "pattern": "*.{jpg,png,gif}",
+      "directory": "images",
+      "assets": {
+        "/": {
+          "files": [
 						"images/**/*"
 					]
-				}
-			}
-		}
-	}
+        }
+      }
+    }
+  }
 }

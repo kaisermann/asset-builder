@@ -44,7 +44,8 @@
           "vendor": [
 						"assets/scripts/vendor/*.js"
 					],
-          "bower": []
+          "bower": [],
+          "npm": []
         }
       }
     },
@@ -61,7 +62,8 @@
 						"assets/styles/vendor/reset.css",
 						"assets/styles/vendor/*.css"
 					],
-          "bower": []
+          "bower": [],
+          "npm": []
         }
       }
     },
