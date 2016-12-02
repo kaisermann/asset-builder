@@ -1,6 +1,6 @@
 {
   "name": "asset-orchestrator",
-  "version": "1.2.6",
+  "version": "1.2.8",
   "description": "assembles and orchestrates your assets so you can run them through your asset pipeline.",
   "main": "index.js",
   "scripts": {
@@ -29,23 +29,22 @@
   "devDependencies": {
     "bower": "*",
     "chai": "*",
-    "coveralls": "^2.11.2",
+    "coveralls": "^2.11.15",
     "docco": "^0.7.0",
     "istanbul": "^0.4.5",
-    "jsdoc": "^3.3.0-alpha13",
-    "jshint": "^2.5.11",
-    "mkdirp": "^0.5.0",
+    "jsdoc": "^3.4.3",
+    "jshint": "^2.9.4",
+    "mkdirp": "^0.5.1",
     "mocha": "*",
-    "q": "^1.1.2"
+    "q": "^1.4.1"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "lodash": "^4.16.1",
-    "main-bower-files": "^2.4.0",
-    "main-npm-files": "^1.2.0",
+    "lodash": "^4.17.2",
+    "main-bower-files": "^2.13.1",
+    "main-npm-files": "^1.2.1",
     "minimatch": "^3.0.3",
-    "object-path": "^0.11.2",
-    "rolleiflex": "^1.0.0-alpha.3",
+    "object-path": "^0.11.3",
     "strip-json-comments": "^2.0.1",
     "traverse": "^0.6.6"
   }
