@@ -7,15 +7,15 @@
     },
     /* phase: mandatory parameters */
     "supportedBrowsers": [
-			"last 2 versions",
-			"android 4",
-			"opera 12"
-		],
+      "last 2 versions",
+      "android 4",
+      "opera 12"
+    ],
     "browserSync": {
       "files": [
-				"{lib,templates}/**/*.{php,html}",
-				"*.{php,html}"
-			],
+        "{lib,templates}/**/*.{php,html}",
+        "*.{php,html}"
+      ],
       "whitelist": [],
       "blacklist": [],
       "devUrl": "localhost/phase"
@@ -28,9 +28,9 @@
      * it in the taskHelpers object inside your gulpfile (see taskHelpers.images).
      */
     "simpleTasks": [
-			"fonts",
-			"images"
-		]
+      "fonts",
+      "images"
+    ]
   },
   /* File-type-name (scripts, styles...) must match its related task-name and asset-type-name */
   "resources": {
@@ -42,8 +42,8 @@
           "main": true,
           "files": "scripts/wrapper.js",
           "vendor": [
-						"assets/scripts/vendor/*.js"
-					],
+            "assets/scripts/vendor/*.js"
+          ],
           "bower": ["bootstrap"],
           "npm": []
         }
@@ -56,12 +56,12 @@
         "main.css": {
           "main": true,
           "files": [
-						"styles/wrapper.styl"
-					],
+            "styles/wrapper.styl"
+          ],
           "vendor": [
-						"assets/styles/vendor/reset.css",
-						"assets/styles/vendor/*.css"
-					],
+            "assets/styles/vendor/reset.css",
+            "assets/styles/vendor/*.css"
+          ],
           "bower": [],
           "npm": []
         }
@@ -73,8 +73,8 @@
       "assets": {
         "/": {
           "files": [
-						"fonts/**/*"
-					]
+            "fonts/**/*"
+          ]
         }
       }
     },
@@ -84,8 +84,8 @@
       "assets": {
         "/": {
           "files": [
-						"images/**/*"
-					]
+            "images/**/*"
+          ]
         }
       }
     }
