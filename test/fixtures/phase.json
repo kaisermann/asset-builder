@@ -46,7 +46,8 @@
           ],
           "bower": ["bootstrap"],
           "npm": []
-        }
+        },
+        "teste.js": "scripts/wrapper2.js"
       }
     },
     "styles": {
