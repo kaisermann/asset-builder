@@ -29,22 +29,22 @@
   "devDependencies": {
     "bower": "*",
     "chai": "*",
-    "coveralls": "^2.11.16",
+    "coveralls": "^2.13.1",
     "docco": "^0.7.0",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
     "jshint": "^2.9.4",
     "mkdirp": "^0.5.1",
     "mocha": "*",
-    "q": "^1.4.1"
+    "q": "^1.5.0"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
     "lodash": "^4.17.4",
     "main-bower-files": "^2.13.1",
     "main-npm-files": "^1.2.1",
-    "minimatch": "^3.0.3",
-    "object-path": "^0.11.3",
+    "minimatch": "^3.0.4",
+    "object-path": "^0.11.4",
     "strip-json-comments": "^2.0.1",
     "traverse": "^0.6.6"
   }
